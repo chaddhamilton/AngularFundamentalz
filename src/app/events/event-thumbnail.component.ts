@@ -17,8 +17,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
           <div>Price: \${{event?.price}}</div>
           <div *ngIf="event?.location" >Location: {{event.location.city}}, {{event.location.country}} </div>
           <div *ngIf="event?.onlineUrl">Url: {{event.onlineUrl}} </div>
-       </div>
-       
+       </div>    
     `,
     styles: [
     `.well div {color: #bbb}
