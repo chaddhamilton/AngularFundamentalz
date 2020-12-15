@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 import { EventsAppComponent } from './events-app.component';
 import { TestService } from './test.service';
 import { EventsListComponent } from './events/events-list.component';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { NavbarComponent } from './events/nav/navbar.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
-import { appRoutes} from './routes';
 import { CreateEventsComponent } from './events/create-events.component';
 import { Error404Component } from './errors/404.component';
 import { EventRouteActivator} from './events/event-details/event-route-activator.service'
 import { EventsListResolver } from './shared/events-list-resolver.service';
 import { ProfileComponent } from './user/profile.component'; 
 import { AppRoutingModule } from './app-routing.module';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './user/login.component';
+import { AuthService } from './user/auth.service';
+ 
 @NgModule({
   declarations: [
     EventsAppComponent,
@@ -24,21 +25,25 @@ import { AppRoutingModule } from './app-routing.module';
     EventDetailsComponent,
     CreateEventsComponent,
     Error404Component,
-    ProfileComponent
+    ProfileComponent,
+    LoginComponent
   ],
  
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
-  
+     
   providers: [
     TestService, 
     EventRouteActivator,
     {
       provide:'canDeactivateCreateEvent',  useValue:checkDirtyState 
     },
-    EventsListResolver
+    EventsListResolver,
+    AuthService
   ],
   bootstrap: [EventsAppComponent]
 })

@@ -2,20 +2,25 @@
     <h1>New Event</h1>
     <hr>  
     <div class="container">
-    <form #form1 >
+    <form #createEventForm="ngForm" (ngSubmit)="createEvent(createEventForm.value)" >
        
             <div class="form-group">
               <label for="exampleInputEmail1">Event Name</label>
-              <input type="input" 
+              <input type="input"  
+                     #eventName
+                     required="true"
+                     name="eventName"
+                     (ngModel)="eventName"
                      class="form-control"
                      id="exampleInputEmail1"
                      placeholder="EventName"
                      >
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" [disabled]="!createEventForm.valid" class="btn btn-primary">Submit</button>
             <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
             
     </form>
+    {{createEventForm?.value | json}} 
     </div>    
 </div>
 

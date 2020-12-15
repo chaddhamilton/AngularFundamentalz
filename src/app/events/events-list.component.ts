@@ -2,6 +2,8 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../shared/event.service';
+import { IEvent } from '../shared/models/event.model';
+
 
 @Component({
  // selector: 'events-list',
@@ -25,7 +27,7 @@ export class EventsListComponent implements OnInit {
   handleBt1 = function(e){
     alert(e);
   }
-  curEvents: any;
+  curEvents: IEvent[];
   
   constructor(private eventServ: EventService, private route :ActivatedRoute) {
      
